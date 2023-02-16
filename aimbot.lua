@@ -28,10 +28,10 @@ local function getClosest(cframe)
 end
 local function isBehindWall(plr)
     local params = RaycastParams.new()
-    local char = plr.Character or plr.CharacterAdded:Wait()
+    local charac = plr.Character or plr.CharacterAdded:Wait()
     local direction = CFrame.new(game.Players.LocalPlayer.Character.Head.Position, charac.HumanoidRootPart.Position).LookVector
     params.FilterDescendantsInstances = {char}
-    local ray = workspace:Raycast(game.Players.LocalPlayer.Character.Head.Position, char.HumanoidRootPart.Position, params)
+    local ray = workspace:Raycast(game.Players.LocalPlayer.Character.Head.Position, charac.HumanoidRootPart.Position, params)
     if ray and ray.Instance and (ray.Instance:IsA("BasePart") and not game.Players:FindFirstChild(ray.Instance:FindFirstAncestorWhichIsA("Model").Name)) then
         return true
     elseif ray == nil then
